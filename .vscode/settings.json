@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/8e346d0a-6768-4719-b95e-b058700d71ab/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/csbc-server"
+}

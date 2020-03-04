@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>csbc-server</name>
+    </assembly>
+    <members>
+        <member name="M:csbc_server.Controllers.WebContentController.#ctor(csbc_server.Data.CsbcContext)">
+            <summary>
+            WebContentController
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:csbc_server.Controllers.WebContentController.GetWebContent">
+            <summary>
+            Get
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
