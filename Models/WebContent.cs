@@ -9,7 +9,7 @@ namespace csbc_server.Models
         public int WebContentId { get; set; }
         public int? CompanyId { get; set; } = 1;
         public string Page { get; set; }
-        public int WebContentTypeId { get; set; } = 1;
+        public WebContentType WebContentType { get; set; }
         public string Type { get; set; }
         public string Title { get; set; }
         public int? ContentSequence {get; set;}

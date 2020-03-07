@@ -142,3 +142,10 @@ D:\repos\personal\csbc-server\obj\Release\netcoreapp3.1\csbc-server.RazorTargetA
 D:\repos\personal\csbc-server\obj\Release\netcoreapp3.1\csbc-server.csproj.CopyComplete
 D:\repos\personal\csbc-server\obj\Release\netcoreapp3.1\csbc-server.dll
 D:\repos\personal\csbc-server\obj\Release\netcoreapp3.1\csbc-server.pdb
+D:\repos\personal\csbc-server\bin\Release\netcoreapp3.1\csbc-server.xml
+D:\repos\personal\csbc-server\bin\Release\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\repos\personal\csbc-server\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\repos\personal\csbc-server\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\repos\personal\csbc-server\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\repos\personal\csbc-server\obj\Release\netcoreapp3.1\csbc-server.MvcApplicationPartsAssemblyInfo.cs
+D:\repos\personal\csbc-server\obj\Release\netcoreapp3.1\csbc-server.xml

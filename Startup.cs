@@ -33,6 +33,7 @@ namespace csbc_server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // services.AddSingleton
             services
                 .AddDbContext<CsbcContext>(options =>
                     options
@@ -88,6 +89,7 @@ namespace csbc_server
                         Path.Combine(AppContext.BaseDirectory, xmlFile);
                     c.IncludeXmlComments (xmlPath);
                 });
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -112,9 +114,11 @@ namespace csbc_server
                     c.RoutePrefix = string.Empty;
                 });
 
-            // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseRouting();
-
+            app
+                .UseCors(x =>
+                    x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthorization();
 
             app
