@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using csbc_server.Data;
+using csbc_server.Interfaces;
 using csbc_server.Models;
 
 namespace csbc_server.Controllers
@@ -16,21 +17,19 @@ namespace csbc_server.Controllers
     {
         private readonly CsbcContext _context;
 
-        public SeasonController(CsbcContext context)
+        public ISeasonRepository Seasons { get; set; }
+
+        public SeasonController(CsbcContext context, ISeasonRepository seasons)
         {
             _context = context;
+            Seasons = seasons;
         }
 
         // GET: api/Season
         [Route("GetAll")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Season>>> GetSeason()
-        {
-            return await _context
-                .Season
-                .OrderByDescending(s => s.SeasonID)
-                .ToListAsync();
-        }
+        public async Task<ActionResult<List<Season>>> GetSeason() =>
+                await Seasons.GetAll(1);
 
         /// <summary>
         /// GetCurrentSeason - retrieves the current season

@@ -18,16 +18,24 @@
             <param name="id">get the called season using the SeasonId</param>
             <returns></returns>
         </member>
-        <member name="M:csbc_server.Controllers.WebContentController.#ctor(csbc_server.Data.CsbcContext)">
+        <member name="M:csbc_server.Controllers.WebContentController.#ctor(csbc_server.Data.CsbcContext,csbc_server.Interfaces.IWebContentRepository)">
             <summary>
             WebContentController
             </summary>
             <param name="context"></param>
+            <param name="_webContent"></param>
         </member>
         <member name="M:csbc_server.Controllers.WebContentController.GetWebContent">
             <summary>
             Get
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:csbc_server.Controllers.WebContentController.Put(csbc_server.Models.WebContent)">
+            <summary>
+            Put for updating web content
+            </summary>
+            <param name="patch"></param>
             <returns></returns>
         </member>
     </members>

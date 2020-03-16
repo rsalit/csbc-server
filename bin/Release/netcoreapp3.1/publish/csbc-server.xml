@@ -4,6 +4,20 @@
         <name>csbc-server</name>
     </assembly>
     <members>
+        <member name="M:csbc_server.Controllers.SeasonController.GetCurrentSeason(System.Int32)">
+            <summary>
+            GetCurrentSeason - retrieves the current season
+            </summary>
+            <param name="id">uses the companyId</param>
+            <returns></returns>
+        </member>
+        <member name="M:csbc_server.Controllers.SeasonController.GetSeason(System.Int32)">
+            <summary>
+            GetSeason
+            </summary>
+            <param name="id">get the called season using the SeasonId</param>
+            <returns></returns>
+        </member>
         <member name="M:csbc_server.Controllers.WebContentController.#ctor(csbc_server.Data.CsbcContext)">
             <summary>
             WebContentController

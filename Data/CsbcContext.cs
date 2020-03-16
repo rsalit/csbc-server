@@ -5,6 +5,10 @@ namespace csbc_server.Data
 {
     public class CsbcContext : DbContext
     {
+        public CsbcContext()
+        {
+        }
+
         public CsbcContext(
             DbContextOptions<CsbcContext> options)
             : base(options)

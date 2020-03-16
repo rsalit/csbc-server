@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using CSBC.Core.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +16,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using csbc_server.Data;
+using csbc_server.Interfaces;
+using csbc_server.Repositories;
 
 namespace csbc_server
 {
@@ -33,7 +36,6 @@ namespace csbc_server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddSingleton
             services
                 .AddDbContext<CsbcContext>(options =>
                     options
@@ -55,6 +57,9 @@ namespace csbc_server
                             .UseSqlServer(Configuration
                                 .GetConnectionString("CsbcContext")));
             }
+            services.AddScoped<ISeasonRepository, SeasonRepository>();
+            services.AddScoped<IWebContentRepository, WebContentRepository>();
+
             services.AddControllers();
             services
                 .AddSwaggerGen(c =>
@@ -64,15 +69,14 @@ namespace csbc_server
                         new OpenApiInfo {
                             Version = "v1",
                             Title = "CSBC Server API",
-                            Description =
-                                "A simple example ASP.NET Core Web API",
+                            Description = "CSBC web site back end",
                             TermsOfService =
                                 new Uri("https://example.com/terms"),
                             Contact =
                                 new OpenApiContact {
                                     Name = "Richard Salit",
                                     Email = string.Empty,
-                                    Url = new Uri("https://twitter.com/spboyer")
+                                    Url = new Uri("https://twitter.com/rsalit")
                                 },
                             License =
                                 new OpenApiLicense {

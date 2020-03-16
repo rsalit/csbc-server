@@ -15,8 +15,11 @@ namespace csbc_server.Models
         public Nullable<System.DateTime> FromDate { get; set; }
         public Nullable<System.DateTime> ToDate { get; set; }
         [Display(Name = "Player Fee")]
+        [Column(TypeName="Money")]
         public Nullable<decimal> ParticipationFee { get; set; }
+        [Column(TypeName="Money")]
         public Nullable<decimal> SponsorFee { get; set; }
+        [Column(TypeName="Money")]
         public Nullable<decimal> ConvenienceFee { get; set; }
         public Nullable<bool> CurrentSeason { get; set; }
         public Nullable<bool> CurrentSchedule { get; set; }

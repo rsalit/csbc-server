@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using csbc_server.Data;
+using csbc_server.Interfaces;
 using csbc_server.Models;
 
 namespace csbc_server.Controllers
@@ -16,13 +17,20 @@ namespace csbc_server.Controllers
     {
         private readonly CsbcContext _context;
 
+        public IWebContentRepository Contents { get; set; }
+
         /// <summary>
         /// WebContentController
         /// </summary>
         /// <param name="context"></param>
-        public WebContentController(CsbcContext context)
+        /// <param name="_webContent"></param>
+        public WebContentController(
+            CsbcContext context,
+            IWebContentRepository _webContent
+        )
         {
             _context = context;
+            Contents = _webContent;
         }
 
         /// <summary>
@@ -47,6 +55,49 @@ namespace csbc_server.Controllers
             }
 
             return webContent;
+        }
+
+        /// <summary>
+        /// Put for updating web content
+        /// </summary>
+        /// <param name="patch"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public IActionResult Put(WebContent patch)
+        {
+            var key = patch.WebContentId;
+
+            //    Validate(patch.GetEntity());
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.WebContent.Update (patch);
+            _context.SaveChanges();
+
+            // if (webContent == null)
+            // {
+            //     return NotFound();
+            // }
+            // TO DO: need to fix this!
+            // patch.Put(webContent);
+            // try
+            // {
+            //     Contents.Update (patch);
+            // }
+            // catch (System.Exception)
+            // {
+            //     if (!WebContentExists(key))
+            //     {
+            //         return NotFound();
+            //     }
+            //     else
+            //     {
+            //         throw;
+            //     }
+            // }
+            return Ok(_context.WebContent.Find(patch.WebContentId));
         }
 
         // PUT: api/WebContent/5
@@ -86,15 +137,13 @@ namespace csbc_server.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<WebContent>>
-        PostWebContent(WebContent webContent)
+        public ActionResult<WebContent> PostWebContent(WebContent webContent)
         {
-            _context.WebContent.Add (webContent);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetWebContent",
-            new { id = webContent.WebContentId },
-            webContent);
+            var content = Contents.Insert(webContent);
+            return Ok(content);
+            // return CreatedAtAction("GetWebContent",
+            // new { id = webContent.WebContentId },
+            // webContent);
         }
 
         // DELETE: api/WebContent/5
